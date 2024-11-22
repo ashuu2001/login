@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f3f4f6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .logincontent {
+            max-width: 500px;
+            margin: 60px auto;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .logintop h1 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #4a90e2;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .textbox {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #ced4da;
+        }
+        .textbox:focus {
+            border-color: #4a90e2;
+            box-shadow: 0 0 10px rgba(74, 144, 226, 0.2);
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #4a90e2;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #357abd;
+        }
+        .msg {
+            color: red;
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .loginbottom {
+            text-align: center;
+        }
+        .worddark a {
+            color: #4a90e2;
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .worddark a:hover {
+            text-decoration: underline;
+        }
+        .forgot-password {
+            font-size: 14px;
+            color: #6c757d;
+        }
+        .forgot-password a {
+            color: #4a90e2;
+        }
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        /* Center flash message */
+        .flash-message {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="logincontent">
+    <div class="logintop">
+        <h1>Login</h1>
+    </div>
+
+    <!-- Flash message block, centered and blue (using alert-primary for blue color) -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="alert alert-primary flash-message" role="alert">
+                {{ messages[0][1] }}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <div class="loginbottom">
+        <form action="{{ url_for('login') }}" method="post" autocomplete="off">
+            <div class="msg">{{ msg }}</div>
+            
+            <input type="email" name="email" placeholder="Enter Your Email" class="textbox" id="email" required>
+            <input type="password" name="password" placeholder="Enter Your Password" class="textbox" id="password" required>
+            
+            <button type="submit" class="btn">Login</button>
+        </form>
+        
+        <p class="worddark mt-4">New to this page? <a href="{{ url_for('register') }}">Register here</a></p>
+        <p class="forgot-password mt-3">Forgot your password? <a href="{{ url_for('request_reset') }}">Click here</a></p>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

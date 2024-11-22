@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #2d3e50;
+            color: white;
+            padding-top: 20px;
+        }
+        .sidebar h1 {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #00bcd4;
+            margin-bottom: 30px;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 10px 0;
+            padding: 10px 20px;
+        }
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            display: block;
+            transition: 0.3s;
+        }
+        .sidebar ul li a:hover, .sidebar ul li.active a {
+            background-color: #00bcd4;
+            border-radius: 5px;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            text-align: center;
+        }
+        .content h2 {
+            color: #2d3e50;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .message-box {
+            font-size: 18px;
+            color: #2d3e50;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Sidebar Section -->
+    <div class="sidebar">
+        <h1>Side Bar</h1>
+        <ul>
+            <li class="active"><a href="{{ url_for('index') }}">Index</a></li>
+            <li><a href="{{ url_for('display') }}">Display</a></li>
+            <li><a href="{{ url_for('update') }}">Update</a></li>
+            <li><a href="{{ url_for('upload_file') }}">Upload File</a></li>
+            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content Section -->
+    <div class="content">
+        <h2>Welcome! You are on the Index Page</h2>
+        <div class="message-box">
+            {{ msg }}
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
